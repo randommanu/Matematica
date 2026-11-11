@@ -1,4 +1,4 @@
-const V = 'tabuada-v6';
+const V = 'contas-v7';
 const CORE = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
@@ -29,6 +29,7 @@ self.addEventListener('fetch', e => {
         }
         return res;
       }).catch(() => hit || (r.mode === 'navigate' ? caches.match('index.html') : Response.error()));
+      e.waitUntil(net.catch(() => {}));
       return hit || net;
     })
   );
